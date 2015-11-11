@@ -7,10 +7,10 @@ RUN yum -y install epel-release ; yum clean all
 RUN yum -y install redis ; yum clean all
 
 # Define mountable directories
-VOLUME ["/data"]
+VOLUME ["/opt/work"]
 
 # Define working directory
-WORKDIR /data
+WORKDIR /work
 
 # Expose ports
 EXPOSE 6379
