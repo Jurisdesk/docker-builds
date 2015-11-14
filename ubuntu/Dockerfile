@@ -1,6 +1,6 @@
 # Pull base image.
 FROM ubuntu:latest
-MAINTAINER NodeBB Docker Team <docker-devs@nodebb.org>
+MAINTAINER James Barlow <james@dockerd.io>
 
 # Install base packages
 RUN apt-get update
@@ -8,7 +8,7 @@ RUN apt-get upgrade -y
 RUN apt-get install nodejs nodejs-legacy npm imagemagick git -y
 
 # Install nodebb
-RUN cd /opt && git clone -b v0.9.x https://github.com/NodeBB/NodeBB .
+RUN cd /opt && git clone -b v0.9.x https://github.com/NodeBB/NodeBB nodebb
 RUN cd /opt/nodebb && npm install
 
 # Create a mountable volume
