@@ -24,6 +24,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 		libncurses-dev \
 		libpng-dev \
 		libpq-dev \
+		nodejs \
+		npm \
+		mongodb-dev \
 		libreadline-dev \
 		libsqlite3-dev \
 		libssl-dev \
