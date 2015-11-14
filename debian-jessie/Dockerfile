@@ -36,4 +36,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 		patch \
 		xz-utils \
 		zlib1g-dev \
+		redis-server \
 	&& rm -rf /var/lib/apt/lists/*
+EXPOSE 6379
+CMD "redis-server"
