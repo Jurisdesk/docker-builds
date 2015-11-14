@@ -1,5 +1,5 @@
 FROM centos:centos7
-MAINTAINER NodeBB Docker Team <docker-devs@nodebb.org>
+MAINTAINER James Barlow <james@dockerd.io>
 
 # install main packages:
 RUN yum -y update ; yum clean all
@@ -10,7 +10,7 @@ RUN yum -y install nodejs git ImageMagick npm
 RUN yum -y install openssl openssl-devel
 
 # clone nodebb and install it
-RUN cd /opt ; git clone -b v0.5.x https://github.com/NodeBB/NodeBB nodebb
+RUN cd /opt ; git clone -b v0.9.x https://github.com/NodeBB/NodeBB nodebb
 RUN cd /opt/nodebb ; npm install
 
 # Create a nodebb volume
