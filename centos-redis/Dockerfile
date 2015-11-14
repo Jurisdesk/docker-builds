@@ -1,18 +1,31 @@
+# Pull base image
 FROM centos:centos7
-MAINTAINER NodeBB Docker Team <docker-devs@nodebb.org>
 
-# install packages
-RUN yum -y update ; yum clean all
-RUN yum -y install epel-release ; yum clean all
-RUN yum -y install redis ; yum clean all
+# Maintener
+MAINTAINER James Barlow <james@dockerd.io>
 
-# Define mountable directories
-VOLUME ["/opt/work"]
+# Install MongoDB
+RUN rpm -vih http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm
+RUN yum update -y
+RUN yum install redis -y
+RUN yum clean all
 
-# Define working directory
-WORKDIR /work
+# Copy config redis
+ADD etc/redis.conf /etc/redis.conf
 
-# Expose ports
+# User
+USER root
+
+# Mountable directories
+VOLUME ["/var/lib/redis"]
+
+# Set the environment variables
+ENV HOME /var/lib/redis
+
+# Working directory
+WORKDIR /var/lib/redis
+
+CMD ["/usr/bin/redis-server", "/etc/redis.conf"]
+
+# Expose ports.
 EXPOSE 6379
-
-CMD [ "redis-server" ]
